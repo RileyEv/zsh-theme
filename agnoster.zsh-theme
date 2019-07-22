@@ -88,9 +88,22 @@ prompt_end() {
 
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    # prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+  if [[ "$HOST" == "groot" ]]; then
+    prompt_segment cyan black "@G"
   fi
+  if [[ "$HOST" == "loki" ]]; then
+    prompt_segment cyan black "@L"
+  fi
+  if [[ "$HOST" == "thor" ]]; then
+    prompt_segment cyan black "@T"
+  fi
+  if [[ "$HOST" == "jarvis" ]]; then
+    prompt_segment cyan black "@J"
+  fi
+
+  # if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    # prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+  # fi
 }
 
 # Git: branch/detached head, dirty status
@@ -113,7 +126,7 @@ prompt_git() {
     if [[ -n $dirty ]]; then
       prompt_segment yellow black
     else
-      prompt_segment green $CURRENT_FG
+      prompt_segment green white
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
@@ -207,7 +220,7 @@ prompt_dir() {
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-  prompt_segment 172 black "(`basename $virtualenv_path`)"
+  prompt_segment 172 0 "(`basename $virtualenv_path`)"
   fi
 }
 
@@ -229,8 +242,8 @@ prompt_status() {
 build_prompt() {
   RETVAL=$?
   prompt_status
-  prompt_virtualenv
   prompt_context
+  prompt_virtualenv
   prompt_dir
   prompt_git
   prompt_bzr
