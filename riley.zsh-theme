@@ -92,7 +92,7 @@ prompt_context() {
     prompt_segment cyan black "@G"
   fi
   if [[ "$HOST" == "loki" ]]; then
-    prompt_segment green black "@L"
+    prompt_segment green white "@L"
   fi
   if [[ "$HOST" == "thor" ]]; then
     prompt_segment red black "@T"
