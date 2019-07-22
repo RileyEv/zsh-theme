@@ -92,13 +92,13 @@ prompt_context() {
     prompt_segment cyan black "@G"
   fi
   if [[ "$HOST" == "loki" ]]; then
-    prompt_segment cyan black "@L"
+    prompt_segment green black "@L"
   fi
   if [[ "$HOST" == "thor" ]]; then
-    prompt_segment cyan black "@T"
+    prompt_segment red black "@T"
   fi
   if [[ "$HOST" == "jarvis" ]]; then
-    prompt_segment cyan black "@J"
+    prompt_segment magenta black "@J"
   fi
 
   # if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
