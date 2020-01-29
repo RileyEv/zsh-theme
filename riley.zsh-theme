@@ -100,7 +100,7 @@ prompt_context() {
   if [[ "$HOST" == "jarvis" ]]; then
     prompt_segment magenta black "@J"
   fi
-  if [[ "$HOST" == "bc4login4.bc4.acrc.priv"]]; then
+  if [[ "$HOST" == "bc4login4.bc4.acrc.priv" ]]; then
     prompt_segment red black "@bc4"
   fi
 
